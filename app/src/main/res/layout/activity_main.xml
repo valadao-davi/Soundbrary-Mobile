@@ -1,59 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:fillViewport="true"
-    android:id="@+id/main">
+    android:background="#FFFFFF">
 
-    <LinearLayout
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:fillViewport="true"
+        android:id="@+id/main">
 
-        <!-- ===== HEADER / HERO SECTION ===== -->
-        <!--
-            RelativeLayout roxo: contém topBar, heroTitle, featuresCard
-            e a onda branca fixada na base (layout_alignParentBottom).
-            A onda sobrepõe ligeiramente o conteúdo — por isso o
-            paddingBottom do RelativeLayout é igual à altura da onda (80dp),
-            garantindo que o card não fique atrás dela.
-        -->
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="405dp"
-            android:background="#FFFFFF"
-            android:paddingBottom="10dp">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/waveHeroBottom"
+            <!-- ===== HEADER / HERO SECTION ===== -->
+            <!--
+                RelativeLayout roxo: contém topBar, heroTitle, featuresCard
+                e a onda branca fixada na base (layout_alignParentBottom).
+                A onda sobrepõe ligeiramente o conteúdo — por isso o
+                paddingBottom do RelativeLayout é igual à altura da onda (80dp),
+                garantindo que o card não fique atrás dela.
+            -->
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_alignParentTop="true"
-                android:contentDescription="@null"
-                android:scaleType="fitXY"
-                android:src="@drawable/wave_hero_bottom" />
+                android:layout_height="405dp"
+                android:background="#FFFFFF"
+                android:paddingBottom="20dp"
+                android:id="@+id/heroSection">
 
-            <!-- ── Top Bar: Logo + Search + Menu ── -->
-            <LinearLayout
-                android:id="@+id/topBar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingHorizontal="16dp"
-                android:paddingTop="8dp"
-                android:paddingBottom="12dp">
+                <ImageView
+                    android:id="@+id/waveHeroBottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:layout_alignParentTop="true"
+                    android:contentDescription="@null"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/wave_hero_bottom" />
 
-                <!-- Logo -->
-
-                <!-- Search bar -->
+                <!-- ── Top Bar: Logo + Search + Menu ── -->
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:id="@+id/topBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="16dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="12dp">
+
+                    <!-- Logo -->
+
+                    <!-- Search bar -->
+
 
                     <ImageView
                         android:layout_width="150dp"
@@ -61,617 +66,734 @@
                         android:src="@drawable/soundbrary_logo">
 
                     </ImageView>
+
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginEnd="12dp"
+                        android:layout_weight="1.2"
+                        android:background="@drawable/bg_search_bar">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_borda_cinza"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingHorizontal="10dp">
+
+                            <EditText
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:ellipsize="end"
+                                android:singleLine="true"
+                                android:text="Procure por seu timbre preferido"
+                                android:textColor="#BBBBBB"
+                                android:textSize="10sp"
+                                android:background="@android:color/transparent"
+                                />
+
+                            <!-- Defina android:src="@drawable/ic_search" -->
+                            <ImageView
+                                android:id="@+id/icSearch"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:contentDescription="Buscar"
+                                android:src="@drawable/ic_search_bar"
+                                android:padding="4dp"/>
+                        </LinearLayout>
+                    </FrameLayout>
+
+                    <!-- Hamburger Menu -->
+                    <LinearLayout
+                        android:id="@+id/icBurguerMenu"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <View
+                            android:layout_width="18dp"
+                            android:layout_height="2dp"
+                            android:layout_marginBottom="4dp"
+                            android:background="#FFFFFF" />
+
+                        <View
+                            android:layout_width="18dp"
+                            android:layout_height="2dp"
+                            android:layout_marginBottom="4dp"
+                            android:background="#FFFFFF" />
+
+                        <View
+                            android:layout_width="18dp"
+                            android:layout_height="2dp"
+                            android:background="#FFFFFF" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/menuOptions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/topBar"
+                    android:orientation="vertical"
+                    android:padding="20dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:text="Entrar"
+                        android:textColor="#FFFFFF"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp" />
+                    <TextView
+                        android:text="Cadastrar"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp" />
+                    <TextView
+                        android:text="Sobre"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp" />
                 </LinearLayout>
 
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="32dp"
-                    android:layout_marginEnd="12dp"
-                    android:layout_weight="1.2"
-                    android:background="@drawable/bg_search_bar">
+                <!-- ── Hero title ── -->
+
+
+                <TextView
+                    android:id="@+id/heroTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/topBar"
+                    android:lineSpacingMultiplier="1.1"
+                    android:paddingHorizontal="18dp"
+                    android:paddingTop="8dp"
+                    android:text="Ajude nós\nconstruindo uma\ncomunidade:"
+                    android:textColor="#000000"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="100dp"
+                    android:layout_alignTop="@id/heroTitle"
+                    android:layout_marginTop="12dp"
+                    android:layout_toEndOf="@id/heroTitle"
+                    android:src="@drawable/ic_triangulos"
+                    android:scaleType="centerCrop"/>
+
+
+
+
+                <!-- ── Features card ── -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/featuresCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/heroTitle"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="16dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="4dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/bg_borda_cinza"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="10dp">
+                        android:layout_height="wrap_content"
+                        android:background="#E8DCF0"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="12dp">
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:ellipsize="end"
-                            android:singleLine="true"
-                            android:text="Procure por seu timbre preferido"
-                            android:textColor="#BBBBBB"
-                            android:textSize="10sp" />
+                        <!-- Feature 1 -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="44dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
 
-                        <!-- Defina android:src="@drawable/ic_search" -->
-                        <ImageView
-                            android:id="@+id/icSearch"
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:contentDescription="Buscar" />
+                            <!-- Defina android:src="@drawable/ic_music_note" -->
+                            <ImageView
+                                android:id="@+id/icFeatureMusic"
+                                android:src="@drawable/ic_music_note"
+                                android:layout_width="22dp"
+                                android:layout_height="22dp"
+                                android:contentDescription="Música" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:text="Compartilhe seu conhecimento sobre música"
+                                android:textColor="#333333"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:background="#EEEEEE" />
+
+                        <!-- Feature 2 -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="44dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <!-- Defina android:src="@drawable/ic_search_tone" -->
+                            <ImageView
+                                android:id="@+id/icFeatureSearch"
+                                android:layout_width="22dp"
+                                android:src="@drawable/ic_search"
+                                android:layout_height="22dp"
+                                android:contentDescription="Buscar timbre" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:text="Procure por aquele timbre de instrumento"
+                                android:textColor="#333333"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:background="#EEEEEE" />
+
+                        <!-- Feature 3 -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="44dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <!-- Defina android:src="@drawable/ic_star" -->
+                            <ImageView
+                                android:id="@+id/icFeatureStar"
+                                android:layout_width="22dp"
+                                android:src="@drawable/ic_star"
+                                android:layout_height="22dp"
+                                android:contentDescription="Avaliar" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:text="Construa uma comunidade avaliando dissays"
+                                android:textColor="#333333"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:background="#EEEEEE" />
+
+                        <!-- Feature 4 -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="44dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <!-- Defina android:src="@drawable/ic_favorite" -->
+                            <ImageView
+                                android:id="@+id/icFeatureFavorite"
+                                android:layout_width="22dp"
+                                android:src="@drawable/ic_favorite"
+                                android:layout_height="22dp"
+                                android:contentDescription="Favoritar" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:text="Salve seus dissays preferidos"
+                                android:textColor="#333333"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+
                     </LinearLayout>
-                </FrameLayout>
-
-                <!-- Hamburger Menu -->
-                <LinearLayout
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <View
-                        android:layout_width="18dp"
-                        android:layout_height="2dp"
-                        android:layout_marginBottom="4dp"
-                        android:background="#FFFFFF" />
-
-                    <View
-                        android:layout_width="18dp"
-                        android:layout_height="2dp"
-                        android:layout_marginBottom="4dp"
-                        android:background="#FFFFFF" />
-
-                    <View
-                        android:layout_width="18dp"
-                        android:layout_height="2dp"
-                        android:background="#FFFFFF" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <!-- ── Hero title ── -->
-
-
-            <TextView
-                android:id="@+id/heroTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/topBar"
-                android:lineSpacingMultiplier="1.1"
-                android:paddingHorizontal="18dp"
-                android:paddingTop="8dp"
-                android:text="Ajude nós\nconstruindo uma\ncomunidade:"
-                android:textColor="#000000"
-                android:textSize="22sp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="100dp"
-                android:layout_alignTop="@id/heroTitle"
-                android:layout_marginTop="12dp"
-                android:layout_toEndOf="@id/heroTitle"
-                android:src="@drawable/ic_triangulos"
-                android:scaleType="centerCrop"/>
+                </androidx.cardview.widget.CardView>
 
 
 
+                <!--
+                    ══════════════════════════════════════════
+                    ONDA BRANCA — fixada na base do hero roxo
+                    Sobrepõe o paddingBottom de 80dp do RelativeLayout.
+                    O drawable wave_hero_bottom.xml é um VectorDrawable
+                    com uma curva bezier branca igual à do Figma.
+                    ══════════════════════════════════════════
+                -->
 
-            <!-- ── Features card ── -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/featuresCard"
+
+            </RelativeLayout>
+
+            <!-- ===== SECTION: Já ouviu uma música ===== -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/heroTitle"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp"
-                app:cardBackgroundColor="#FFFFFF"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="4dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#E8DCF0"
-                    android:orientation="vertical"
-                    android:paddingHorizontal="16dp"
-                    android:paddingVertical="12dp">
-
-                    <!-- Feature 1 -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="44dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <!-- Defina android:src="@drawable/ic_music_note" -->
-                        <ImageView
-                            android:id="@+id/icFeatureMusic"
-                            android:src="@drawable/ic_music_note"
-                            android:layout_width="22dp"
-                            android:layout_height="22dp"
-                            android:contentDescription="Música" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:text="Compartilhe seu conhecimento sobre música"
-                            android:textColor="#333333"
-                            android:textSize="13sp" />
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
-                        android:background="#EEEEEE" />
-
-                    <!-- Feature 2 -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="44dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <!-- Defina android:src="@drawable/ic_search_tone" -->
-                        <ImageView
-                            android:id="@+id/icFeatureSearch"
-                            android:layout_width="22dp"
-                            android:src="@drawable/ic_search"
-                            android:layout_height="22dp"
-                            android:contentDescription="Buscar timbre" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:text="Procure por aquele timbre de instrumento"
-                            android:textColor="#333333"
-                            android:textSize="13sp" />
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
-                        android:background="#EEEEEE" />
-
-                    <!-- Feature 3 -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="44dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <!-- Defina android:src="@drawable/ic_star" -->
-                        <ImageView
-                            android:id="@+id/icFeatureStar"
-                            android:layout_width="22dp"
-                            android:src="@drawable/ic_star"
-                            android:layout_height="22dp"
-                            android:contentDescription="Avaliar" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:text="Construa uma comunidade avaliando dissays"
-                            android:textColor="#333333"
-                            android:textSize="13sp" />
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
-                        android:background="#EEEEEE" />
-
-                    <!-- Feature 4 -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="44dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <!-- Defina android:src="@drawable/ic_favorite" -->
-                        <ImageView
-                            android:id="@+id/icFeatureFavorite"
-                            android:layout_width="22dp"
-                            android:src="@drawable/ic_favorite"
-                            android:layout_height="22dp"
-                            android:contentDescription="Favoritar" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:text="Salve seus dissays preferidos"
-                            android:textColor="#333333"
-                            android:textSize="13sp" />
-                    </LinearLayout>
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-
-
-            <!--
-                ══════════════════════════════════════════
-                ONDA BRANCA — fixada na base do hero roxo
-                Sobrepõe o paddingBottom de 80dp do RelativeLayout.
-                O drawable wave_hero_bottom.xml é um VectorDrawable
-                com uma curva bezier branca igual à do Figma.
-                ══════════════════════════════════════════
-            -->
-
-
-        </RelativeLayout>
-
-        <!-- ===== SECTION: Já ouviu uma música ===== -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingHorizontal="16dp"
-            android:paddingTop="20dp"
-            android:paddingBottom="8dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingMultiplier="1.2"
-                android:text="Já ouviu uma música e pensou:\ncomo esse som foi feito?"
-                android:textColor="#1A1A1A"
-                android:textSize="17sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Childish Gambino - Redbone"
-                android:textColor="#888888"
-                android:textSize="11sp" />
-        </LinearLayout>
-
-        <!-- Video Cards (horizontal scroll) -->
-
-        <!-- ===== SECTION: Compartilhe seu Conhecimento ===== -->
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clipToPadding="false"
-            android:paddingStart="16dp"
-            android:paddingBottom="8dp"
-            android:scrollbars="none">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <!-- Video Card 1 -->
-                <FrameLayout
-                    android:layout_width="200dp"
-                    android:layout_height="130dp"
-                    android:layout_marginEnd="12dp"
-                    android:background="#111133">
-
-                    <!-- Defina android:src="@drawable/img_video_thumb_1" -->
-                    <WebView
-                        android:id="@+id/web_view_video1"
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        />
-
-
-                </FrameLayout>
-
-                <!-- Video Card 2 -->
-                <FrameLayout
-                    android:layout_width="200dp"
-                    android:layout_height="130dp"
-                    android:layout_marginEnd="12dp"
-                    android:background="#111133">
-
-                    <!-- Defina android:src="@drawable/img_video_thumb_1" -->
-                    <WebView
-                        android:id="@+id/web_view_video2"
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"/>
-
-
-                </FrameLayout>
-
-            </LinearLayout>
-        </HorizontalScrollView>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:paddingHorizontal="16dp"
-            android:paddingTop="16dp"
-            android:paddingBottom="12dp">
-
-            <!-- Defina android:src="@drawable/ic_section_share" -->
-            <ImageView
-                android:id="@+id/icSectionShare"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_music_note"
-                android:padding="8dp"
-                android:background="@drawable/bg_rounded_pink"
-                android:contentDescription="Compartilhar" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="Compartilhe seu Conhecimento"
-                android:textColor="#1A1A1A"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <!-- Instrument Cards -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingHorizontal="12dp"
-            android:paddingBottom="16dp">
-
-            <!-- Guitarra -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:orientation="vertical"
-                android:gravity="center"
-                android:layout_marginHorizontal="4dp"
-                android:background="@drawable/bg_instrument_card"
-                android:paddingVertical="16dp">
-
-                <!-- Defina android:src="@drawable/ic_guitar" -->
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@drawable/bg_borda_preta"
-                    android:padding="8dp"
-                    android:gravity="center">
-
-                    <ImageView
-                        android:id="@+id/icGuitar"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:src="@drawable/ic_guitarra"
-                        android:contentDescription="Guitarra" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4.75dp"
-                        android:text="Guitarra"
-                        android:textColor="#444444"
-                        android:textSize="12sp"
-                        android:gravity="center"
-                        android:textStyle="bold"/>
-
-                </LinearLayout>
-            </LinearLayout>
-
-            <!-- Baixo -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_marginHorizontal="4dp"
-                android:background="@drawable/bg_instrument_card"
-                android:paddingVertical="16dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@drawable/bg_borda_preta"
-                    android:padding="8dp"
-                    android:gravity="center">
-
-                    <ImageView
-                        android:id="@+id/icBass"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:contentDescription="Baixo"
-                        android:src="@drawable/ic_baixo"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4.75dp"
-                        android:text="Baixo"
-                        android:textColor="#444444"
-                        android:textSize="12sp"
-                        android:gravity="center"
-                        android:textStyle="bold"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <!-- Bateria -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_marginHorizontal="4dp"
-                android:background="@drawable/bg_instrument_card"
-                android:paddingVertical="16dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@drawable/bg_borda_preta"
-                    android:padding="8dp"
-                    android:gravity="center">
-
-                    <ImageView
-                        android:id="@+id/icDrums"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:contentDescription="Bateria"
-                        android:src="@drawable/ic_bateria"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4.75dp"
-                        android:text="Bateria"
-                        android:textColor="#444444"
-                        android:textSize="12sp"
-                        android:gravity="center"
-                        android:textStyle="bold"/>
-
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-
-        <!-- ===== SECTION: Search your favorite tone ===== -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:paddingHorizontal="16dp"
-            android:paddingBottom="12dp">
-
-            <!-- Defina android:src="@drawable/ic_section_search" -->
-            <ImageView
-                android:id="@+id/icSectionSearch"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_search"
-                android:padding="4dp"
-                android:background="@drawable/bg_rounded_pink"
-                android:contentDescription="Buscar" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="Busque seu timbre favorito:"
-                android:textColor="#1A1A1A"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <!-- Album Art Cards -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingHorizontal="12dp"
-            android:paddingBottom="24dp">
-
-            <!-- The Strokes - Reptilia -->
-            <LinearLayout
-                android:background="@drawable/bg_rounded_pink"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_marginHorizontal="4dp"
-                android:paddingBottom="4dp"
-                android:clipToOutline="true">
-
-                <!-- Defina android:src="@drawable/img_album_strokes" -->
-                <ImageView
-                    android:id="@+id/imgStrokesAlbum"
-                    android:layout_width="match_parent"
-                    android:layout_height="90dp"
-                    android:scaleType="centerCrop"
-                    android:background="#8B2222"
-                    android:src="@drawable/reptilia"
-                    android:contentDescription="The Strokes - Reptilia" />
+                android:paddingHorizontal="16dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="8dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="The Strokes - Reptilia"
-                    android:textColor="#444444"
-                    android:textSize="9sp"
-                    android:maxLines="2"
-                    android:gravity="center"
-                    android:layout_gravity="center_horizontal" />
+                    android:lineSpacingMultiplier="1.2"
+                    android:text="Já ouviu uma música e pensou:\ncomo esse som foi feito?"
+                    android:textColor="#1A1A1A"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+
             </LinearLayout>
 
-            <!-- Childish Gambino - Redbone -->
-            <LinearLayout
-                android:background="@drawable/bg_rounded_pink"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_marginHorizontal="4dp"
-                android:paddingBottom="4dp"
-                android:clipToOutline="true"
-                >
+            <!-- Video Cards (horizontal scroll) -->
 
-                <!-- Defina android:src="@drawable/img_album_gambino" -->
+            <!-- ===== SECTION: Compartilhe seu Conhecimento ===== -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingStart="16dp"
+                android:paddingBottom="8dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- Video Card 1 -->
+                    <FrameLayout
+                        android:layout_width="250dp"
+                        android:layout_height="130dp"
+                        android:layout_marginEnd="12dp"
+                        android:background="#111133">
+
+                        <!-- Defina android:src="@drawable/img_video_thumb_1" -->
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/gambino_vevo"/>
+
+                        <!-- Overlay escuro leve -->
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#66000000" />
+
+                        <!-- Botão de play central -->
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/play_circle"
+                            android:tint="@android:color/white" />
+
+
+                    </FrameLayout>
+
+                    <!-- Video Card 2 -->
+                    <FrameLayout
+                        android:layout_width="250dp"
+                        android:layout_height="130dp"
+                        android:layout_marginEnd="12dp"
+                        android:background="#111133">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/reptilia_vevo" />
+
+                        <!-- Overlay escuro leve -->
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#66000000" />
+
+                        <!-- Botão de play central -->
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/play_circle"
+                            android:tint="@android:color/white" />
+
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="250dp"
+                        android:layout_height="130dp"
+                        android:layout_marginEnd="12dp"
+                        android:background="#111133">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/like_a_stone_vevo" />
+
+                        <!-- Overlay escuro leve -->
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#66000000" />
+
+                        <!-- Botão de play central -->
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/play_circle"
+                            android:tint="@android:color/white" />
+
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="250dp"
+                        android:layout_height="130dp"
+                        android:layout_marginEnd="12dp"
+                        android:background="#111133">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/brightside_vevo" />
+
+                        <!-- Overlay escuro leve -->
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#66000000" />
+
+                        <!-- Botão de play central -->
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/play_circle"
+                            android:tint="@android:color/white" />
+
+
+                    </FrameLayout>
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:paddingHorizontal="16dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="12dp">
+
+                <!-- Defina android:src="@drawable/ic_section_share" -->
                 <ImageView
-                    android:id="@+id/imgGambinoAlbum"
-                    android:layout_width="match_parent"
-                    android:layout_height="90dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/redbone"
-                    android:contentDescription="Childish Gambino - Redbone" />
+                    android:id="@+id/icSectionShare"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_music_note"
+                    android:padding="8dp"
+                    android:background="@drawable/bg_rounded_pink"
+                    android:contentDescription="Compartilhar" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Childish Gambino - Redbone"
-                    android:textColor="#444444"
-                    android:textSize="9sp"
-                    android:maxLines="2"
-                    android:gravity="center"
-
-                    android:layout_gravity="center_horizontal" />
+                    android:layout_marginStart="8dp"
+                    android:text="Compartilhe seu conhecimento:"
+                    android:textColor="#1A1A1A"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
-            <!-- Guns N' Roses - Don't Cry -->
+            <!-- Instrument Cards -->
             <LinearLayout
-                android:background="@drawable/bg_rounded_pink"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_marginHorizontal="4dp"
-                android:paddingBottom="4dp"
-                android:clipToOutline="true">
+                android:orientation="horizontal"
+                android:paddingHorizontal="12dp"
+                android:paddingBottom="16dp">
 
-                <!-- Defina android:src="@drawable/img_album_gnr" -->
+                <!-- Guitarra -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_marginHorizontal="4dp"
+                    android:background="@drawable/bg_instrument_card"
+                    android:paddingVertical="16dp">
+
+                    <!-- Defina android:src="@drawable/ic_guitar" -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@drawable/bg_borda_preta"
+                        android:padding="8dp"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/icGuitar"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@drawable/ic_guitarra"
+                            android:contentDescription="Guitarra" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4.75dp"
+                            android:text="Guitarra"
+                            android:textColor="#444444"
+                            android:textSize="12sp"
+                            android:gravity="center"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Baixo -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_marginHorizontal="4dp"
+                    android:background="@drawable/bg_instrument_card"
+                    android:paddingVertical="16dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@drawable/bg_borda_preta"
+                        android:padding="8dp"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/icBass"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:contentDescription="Baixo"
+                            android:src="@drawable/ic_baixo"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4.75dp"
+                            android:text="Baixo"
+                            android:textColor="#444444"
+                            android:textSize="12sp"
+                            android:gravity="center"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Bateria -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_marginHorizontal="4dp"
+                    android:background="@drawable/bg_instrument_card"
+                    android:paddingVertical="16dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@drawable/bg_borda_preta"
+                        android:padding="8dp"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/icDrums"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:contentDescription="Bateria"
+                            android:src="@drawable/ic_bateria"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4.75dp"
+                            android:text="Bateria"
+                            android:textColor="#444444"
+                            android:textSize="12sp"
+                            android:gravity="center"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ===== SECTION: Search your favorite tone ===== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:paddingHorizontal="16dp"
+                android:paddingBottom="12dp">
+
+                <!-- Defina android:src="@drawable/ic_section_search" -->
                 <ImageView
-                    android:id="@+id/imgGnrAlbum"
-                    android:layout_width="match_parent"
-                    android:layout_height="90dp"
-                    android:scaleType="centerCrop"
-                    android:background="#8B4500"
-                    android:contentDescription="Guns N' Roses - Don't Cry"
-                    android:src="@drawable/dontcry"/>
+                    android:id="@+id/icSectionSearch"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_search"
+                    android:padding="4dp"
+                    android:background="@drawable/bg_rounded_pink"
+                    android:contentDescription="Buscar" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Guns N' Roses - Don't Cry"
-                    android:textColor="#444444"
-                    android:textSize="9sp"
-                    android:maxLines="2"
-                    android:gravity="center"
-                    android:layout_gravity="center_horizontal" />
+                    android:layout_marginStart="8dp"
+                    android:text="Busque seu timbre favorito:"
+                    android:textColor="#1A1A1A"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
             </LinearLayout>
+
+            <!-- Album Art Cards -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="12dp"
+                android:paddingBottom="24dp">
+
+                <!-- The Strokes - Reptilia -->
+                <LinearLayout
+                    android:background="@drawable/bg_rounded_pink"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginHorizontal="4dp"
+                    android:paddingBottom="4dp"
+                    android:clipToOutline="true">
+
+                    <!-- Defina android:src="@drawable/img_album_strokes" -->
+                    <ImageView
+                        android:id="@+id/imgStrokesAlbum"
+                        android:layout_width="match_parent"
+                        android:layout_height="90dp"
+                        android:scaleType="centerCrop"
+                        android:background="#8B2222"
+                        android:src="@drawable/reptilia"
+                        android:contentDescription="The Strokes - Reptilia" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="The Strokes - Reptilia"
+                        android:textColor="#444444"
+                        android:textSize="9sp"
+                        android:maxLines="2"
+                        android:gravity="center"
+                        android:layout_gravity="center_horizontal" />
+                </LinearLayout>
+
+                <!-- Childish Gambino - Redbone -->
+                <LinearLayout
+                    android:background="@drawable/bg_rounded_pink"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginHorizontal="4dp"
+                    android:paddingBottom="4dp"
+                    android:clipToOutline="true"
+                    >
+
+                    <!-- Defina android:src="@drawable/img_album_gambino" -->
+                    <ImageView
+                        android:id="@+id/imgGambinoAlbum"
+                        android:layout_width="match_parent"
+                        android:layout_height="90dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/redbone"
+                        android:contentDescription="Childish Gambino - Redbone" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Childish Gambino - Redbone"
+                        android:textColor="#444444"
+                        android:textSize="9sp"
+                        android:maxLines="2"
+                        android:gravity="center"
+
+                        android:layout_gravity="center_horizontal" />
+                </LinearLayout>
+
+                <!-- Guns N' Roses - Don't Cry -->
+                <LinearLayout
+                    android:background="@drawable/bg_rounded_pink"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginHorizontal="4dp"
+                    android:paddingBottom="4dp"
+                    android:clipToOutline="true">
+
+                    <!-- Defina android:src="@drawable/img_album_gnr" -->
+                    <ImageView
+                        android:id="@+id/imgGnrAlbum"
+                        android:layout_width="match_parent"
+                        android:layout_height="90dp"
+                        android:scaleType="centerCrop"
+                        android:background="#8B4500"
+                        android:contentDescription="Guns N' Roses - Don't Cry"
+                        android:src="@drawable/dontcry"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Guns N' Roses - Don't Cry"
+                        android:textColor="#444444"
+                        android:textSize="9sp"
+                        android:maxLines="2"
+                        android:gravity="center"
+                        android:layout_gravity="center_horizontal" />
+                </LinearLayout>
+            </LinearLayout>
+
         </LinearLayout>
-
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+</androidx.drawerlayout.widget.DrawerLayout>
